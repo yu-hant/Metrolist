@@ -35,8 +35,8 @@ class DiscordRPC(
             largeText = song.album?.title,
             smallText = song.artists.firstOrNull()?.name,
             buttons = listOf(
-                "Listen on YouTube Music" to "https://music.youtube.com/watch?v=${song.song.id}",
-                "Visit Metrolist" to "https://github.com/mostafaalagamy/Metrolist"
+                "在 YouTube Music 收聽" to "https://music.youtube.com/watch?v=${song.song.id}",
+                "Segmentation fault" to "https://youtu.be/dQw4w9WgXcQ"
             ),
             type = Type.LISTENING,
             statusDisplayType = if (useDetails) StatusDisplayType.DETAILS else StatusDisplayType.STATE,
