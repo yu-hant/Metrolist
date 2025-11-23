@@ -25,7 +25,7 @@ class DiscordRPC(
         val adjustedRemainingDuration = (remainingDuration / playbackSpeed).toLong()
         
         setActivity(
-            name = "Metrolist",
+            name = context.getString(R.string.app_name).removeSuffix(" Debug"),
             details = songTitleWithRate,
             state = song.artists.joinToString { it.name },
             detailsUrl = "https://music.youtube.com/watch?v=${song.song.id}",
