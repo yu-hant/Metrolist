@@ -1,15 +1,6 @@
 package com.metrolist.music.utils
 
 import android.content.Context
-import com.metrolist.music.db.entities.Song
-import com.my.kizzy.rpc.KizzyRPC
-import com.my.kizzy.rpc.RpcImage
-
-class DiscordRPC(
-    val context: Context,
-package com.metrolist.music.utils
-
-import android.content.Context
 import com.metrolist.music.R
 import com.metrolist.music.db.entities.Song
 import com.my.kizzy.rpc.KizzyRPC
@@ -40,25 +31,15 @@ class DiscordRPC(
             state = song.artists.joinToString { it.name },
             detailsUrl = "https://music.youtube.com/watch?v=${song.song.id}",
             largeImage = song.song.thumbnailUrl?.let { RpcImage.ExternalImage(it) },
+            smallImage = song.artists.firstOrNull()?.thumbnailUrl?.let { RpcImage.ExternalImage(it) },
             largeText = song.album?.title,
             smallText = song.artists.firstOrNull()?.name,
             buttons = listOf(
                 "Listen on YouTube Music" to "https://music.youtube.com/watch?v=${song.song.id}",
-                "Segmentation fault" to "https://youtu.be/dQw4w9WgXcQ"
+                "Visit Metrolist" to "https://github.com/mostafaalagamy/Metrolist"
             ),
             type = Type.LISTENING,
             statusDisplayType = if (useDetails) StatusDisplayType.DETAILS else StatusDisplayType.STATE,
-            since = currentTime,
-            startTime = calculatedStartTime,
-            endTime = currentTime + adjustedRemainingDuration,
-            applicationId = APPLICATION_ID
-        )
-    }
-
-    companion object {
-        private const val APPLICATION_ID = "1411019391843172514"
-    }
-},
             since = currentTime,
             startTime = calculatedStartTime,
             endTime = currentTime + adjustedRemainingDuration,
