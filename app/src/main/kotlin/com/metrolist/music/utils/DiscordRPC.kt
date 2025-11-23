@@ -35,8 +35,7 @@ class DiscordRPC(
             largeText = song.album?.title,
             smallText = song.artists.firstOrNull()?.name,
             buttons = listOf(
-                "Listen on YouTube Music" to "https://music.youtube.com/watch?v=${song.song.id}",
-                "Visit Metrolist" to "https://github.com/mostafaalagamy/Metrolist"
+                "Listen on YouTube Music" to "https://music.youtube.com/watch?v=${song.song.id}"
             ),
             type = Type.LISTENING,
             statusDisplayType = if (useDetails) StatusDisplayType.DETAILS else StatusDisplayType.STATE,
