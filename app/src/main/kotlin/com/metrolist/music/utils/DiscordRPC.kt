@@ -7,6 +7,16 @@ import com.my.kizzy.rpc.RpcImage
 
 class DiscordRPC(
     val context: Context,
+package com.metrolist.music.utils
+
+import android.content.Context
+import com.metrolist.music.R
+import com.metrolist.music.db.entities.Song
+import com.my.kizzy.rpc.KizzyRPC
+import com.my.kizzy.rpc.RpcImage
+
+class DiscordRPC(
+    val context: Context,
     token: String,
 ) : KizzyRPC(token) {
     suspend fun updateSong(song: Song, currentPlaybackTimeMillis: Long, playbackSpeed: Float = 1.0f, useDetails: Boolean = false) = runCatching {
@@ -38,6 +48,17 @@ class DiscordRPC(
             ),
             type = Type.LISTENING,
             statusDisplayType = if (useDetails) StatusDisplayType.DETAILS else StatusDisplayType.STATE,
+            since = currentTime,
+            startTime = calculatedStartTime,
+            endTime = currentTime + adjustedRemainingDuration,
+            applicationId = APPLICATION_ID
+        )
+    }
+
+    companion object {
+        private const val APPLICATION_ID = "1411019391843172514"
+    }
+},
             since = currentTime,
             startTime = calculatedStartTime,
             endTime = currentTime + adjustedRemainingDuration,
