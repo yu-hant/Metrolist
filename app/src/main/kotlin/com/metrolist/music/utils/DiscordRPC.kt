@@ -1,7 +1,6 @@
 package com.metrolist.music.utils
 
 import android.content.Context
-import com.metrolist.music.R
 import com.metrolist.music.db.entities.Song
 import com.my.kizzy.rpc.KizzyRPC
 import com.my.kizzy.rpc.RpcImage
@@ -26,16 +25,15 @@ class DiscordRPC(
         val adjustedRemainingDuration = (remainingDuration / playbackSpeed).toLong()
         
         setActivity(
-            name = context.getString(R.string.app_name).removeSuffix(" Debug"),
+            name = "Metrolist",
             details = songTitleWithRate,
             state = song.artists.joinToString { it.name },
             detailsUrl = "https://music.youtube.com/watch?v=${song.song.id}",
             largeImage = song.song.thumbnailUrl?.let { RpcImage.ExternalImage(it) },
-            smallImage = song.artists.firstOrNull()?.thumbnailUrl?.let { RpcImage.ExternalImage(it) },
             largeText = song.album?.title,
             smallText = song.artists.firstOrNull()?.name,
             buttons = listOf(
-                "在 YouTube Music 收聽" to "https://music.youtube.com/watch?v=${song.song.id}",
+                "Listen on YouTube Music" to "https://music.youtube.com/watch?v=${song.song.id}",
                 "Segmentation fault" to "https://youtu.be/dQw4w9WgXcQ"
             ),
             type = Type.LISTENING,
